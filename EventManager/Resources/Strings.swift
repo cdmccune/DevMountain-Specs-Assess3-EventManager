@@ -10,4 +10,7 @@ import Foundation
 
 enum Strings {
     static let appName = "EventManager"
+    static let eventEntityName = "Event"
+    static let startDateKey = "startDate"
+    static let tableViewCellID = "eventCell"
 }

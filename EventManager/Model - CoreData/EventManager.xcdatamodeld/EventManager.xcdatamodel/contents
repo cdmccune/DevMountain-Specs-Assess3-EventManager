@@ -2,11 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="eventType" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isAttending" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Event" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

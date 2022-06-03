@@ -19,6 +19,7 @@
 		24D88C13284A66C9002AB246 /* Event + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D88C12284A66C9002AB246 /* Event + Convenience.swift */; };
 		24D88C15284A66D4002AB246 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D88C14284A66D4002AB246 /* CoreDataStack.swift */; };
 		24D88C17284A6AA3002AB246 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D88C16284A6AA3002AB246 /* Strings.swift */; };
+		24D88C19284A6E8C002AB246 /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D88C18284A6E8C002AB246 /* EventListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		24D88C12284A66C9002AB246 /* Event + Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event + Convenience.swift"; sourceTree = "<group>"; };
 		24D88C14284A66D4002AB246 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		24D88C16284A6AA3002AB246 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		24D88C18284A6E8C002AB246 /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				24D88BF7284A65FC002AB246 /* Main.storyboard */,
 				24D88C0A284A6662002AB246 /* EventListViewController.swift */,
 				24D88C0C284A6672002AB246 /* EventDetailViewController.swift */,
+				24D88C18284A6E8C002AB246 /* EventListTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				24D88C17284A6AA3002AB246 /* Strings.swift in Sources */,
 				24D88C0D284A6672002AB246 /* EventDetailViewController.swift in Sources */,
 				24D88C0F284A6685002AB246 /* EventController.swift in Sources */,
+				24D88C19284A6E8C002AB246 /* EventListTableViewCell.swift in Sources */,
 				24D88C0B284A6662002AB246 /* EventListViewController.swift in Sources */,
 				24D88BFC284A65FC002AB246 /* EventManager.xcdatamodeld in Sources */,
 				24D88C13284A66C9002AB246 /* Event + Convenience.swift in Sources */,
