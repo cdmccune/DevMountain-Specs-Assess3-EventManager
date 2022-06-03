@@ -21,9 +21,12 @@ class EventListViewController: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    
 }
 
-extension EventListViewController: UITableViewDelegate {}
+extension EventListViewController: UITableViewDelegate {
+}
 
 extension EventListViewController: UITableViewDataSource {
     
@@ -39,8 +42,16 @@ extension EventListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Strings.tableViewCellID) as? EventListTableViewCell else {return UITableViewCell()}
         
         cell.event = EventController.shared.sections[indexPath.section][indexPath.row]
-        
-        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let event = EventController.shared.sections[indexPath.section][indexPath.row]
+            EventController.shared.deleteEvent(event)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    
 }
