@@ -10,13 +10,16 @@ import UIKit
 
 class EventListViewController: UIViewController {
     
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
+        EventController.shared.fetchEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 }
 
@@ -33,7 +36,11 @@ extension EventListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Strings.tableViewCellID) as? EventListTableViewCell else {return UITableViewCell()}
+        
+        cell.event = EventController.shared.sections[indexPath.section][indexPath.row]
+        
+        
         return cell
     }
 }

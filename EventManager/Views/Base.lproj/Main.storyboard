@@ -36,7 +36,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TS1-C4-R89">
                                                     <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                                    <color key="tintColor" red="0.59011877739999996" green="0.69620290429999998" blue="0.56123237029999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="m8T-4n-4Sl"/>
                                                         <constraint firstAttribute="width" secondItem="TS1-C4-R89" secondAttribute="height" multiplier="1:1" id="s4M-Db-8SS"/>
                                                     </constraints>
                                                 </imageView>
@@ -47,7 +49,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Event Time)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcQ-0N-ffw">
-                                                    <rect key="frame" x="109" y="39" width="97" height="21"/>
+                                                    <rect key="frame" x="70" y="39" width="97" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
@@ -61,12 +63,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GWg-c4-dNm" firstAttribute="centerY" secondItem="6GO-hq-R9W" secondAttribute="centerY" id="2Bc-iw-wYQ"/>
+                                                <constraint firstItem="LcQ-0N-ffw" firstAttribute="leading" secondItem="YdB-KF-Zta" secondAttribute="leading" id="MWf-WH-y9I"/>
                                                 <constraint firstAttribute="bottom" secondItem="TS1-C4-R89" secondAttribute="bottom" constant="10" id="Pgi-Py-tTe"/>
                                                 <constraint firstItem="YdB-KF-Zta" firstAttribute="leading" secondItem="TS1-C4-R89" secondAttribute="trailing" constant="10" id="WCO-l4-Xy1"/>
                                                 <constraint firstItem="YdB-KF-Zta" firstAttribute="top" secondItem="TS1-C4-R89" secondAttribute="top" id="Xez-xf-jgW"/>
                                                 <constraint firstAttribute="trailing" secondItem="GWg-c4-dNm" secondAttribute="trailing" constant="20" symbolic="YES" id="hXK-jh-wDp"/>
                                                 <constraint firstAttribute="bottom" secondItem="LcQ-0N-ffw" secondAttribute="bottom" constant="10" id="jjD-LR-8ux"/>
-                                                <constraint firstItem="LcQ-0N-ffw" firstAttribute="trailing" secondItem="YdB-KF-Zta" secondAttribute="trailing" id="jrM-LT-pwb"/>
                                                 <constraint firstItem="TS1-C4-R89" firstAttribute="top" secondItem="6GO-hq-R9W" secondAttribute="top" constant="10" id="umx-H0-BGA"/>
                                                 <constraint firstItem="TS1-C4-R89" firstAttribute="leading" secondItem="6GO-hq-R9W" secondAttribute="leading" constant="10" id="vO3-Ec-iS0"/>
                                             </constraints>
@@ -104,6 +106,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="OTj-Qa-pkH" id="8eL-by-2Eo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOT-I6-ge3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -214,7 +219,13 @@
                             <constraint firstItem="0DB-gh-964" firstAttribute="centerX" secondItem="kyB-xY-4eA" secondAttribute="centerX" id="rKc-ld-wUr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="c3J-HZ-Jo3"/>
+                    <navigationItem key="navigationItem" id="c3J-HZ-Jo3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="vye-KS-Abh">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="Rn8-XC-leG" id="oIg-d8-b6T"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="borderedView" destination="0DB-gh-964" id="5uD-jj-Zkn"/>
                         <outlet property="descriptionTextView" destination="Adi-dp-plW" id="x7i-1C-vLJ"/>

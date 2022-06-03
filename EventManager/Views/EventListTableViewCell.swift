@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EventListTableViewCellDelegate: AnyObject {
+    func attendingSwitchTapped()
+}
+
 class EventListTableViewCell: UITableViewCell {
     
     
@@ -15,15 +19,24 @@ class EventListTableViewCell: UITableViewCell {
     @IBOutlet var eventNameLabel: UILabel!
     @IBOutlet var eventTypeImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func updateViews() {
+        if let event = event, let date = event.startDate, let eventType = event.eventType  {
+            isAttendingSwitch.isOn = event.isAttending
+            eventTimeLabel.text = "\(date)"
+            eventNameLabel.text = event.name
+            eventTypeImage.image = UIImage(systemName: eventType)
+        }
     }
+    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    var event: Event? {
+        didSet {
+            updateViews()
+        }
     }
-
+    
+    
+  
+    
+    
 }

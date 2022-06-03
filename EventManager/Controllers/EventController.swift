@@ -20,7 +20,7 @@ class EventController {
         return request
     }()
     
-    var sections = [[Event]]()
+    var sections: [[Event]] {[attendingEvents, notAttendingEvents]}
     private var attendingEvents: [Event] = []
     private var notAttendingEvents: [Event] = []
     

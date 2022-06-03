@@ -16,7 +16,14 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var eventPopUpButton: UIButton!
     @IBOutlet var eventDatePicker: UIDatePicker!
     @IBOutlet var descriptionTextView: UITextView!
-    //    @IBOutlet var buttonMenu: UIMenu!
+    
+    enum EventTypes {
+        case entertainment
+        case social
+        case work
+    }
+    
+    private var eventType: EventTypes = .entertainment
     
     
     
@@ -49,29 +56,42 @@ class EventDetailViewController: UIViewController {
         
         
         let workItem = UIAction(title: "Work", image: UIImage(systemName: "signature")) { (action) in
-
-                print("work action was tapped")
+            self.eventType = .work
            }
 
            let entertainmentItem = UIAction(title: "Entertainment", image: UIImage(systemName: "film")) { (action) in
 
-               print("entertainment action was tapped")
+               self.eventType = .entertainment
            }
 
            let socialItem = UIAction(title: "Social", image: UIImage(systemName: "person.3")) { (action) in
-                print("social action was tapped")
+               self.eventType = .social
            }
 
            let menu = UIMenu(title: "Event Type", options: .displayInline, children: [entertainmentItem, workItem , socialItem])
       
         eventPopUpButton.menu = menu
         eventPopUpButton.showsMenuAsPrimaryAction = true
-//        eventPopUpButton.changesSelectionAsPrimaryAction = true
+
     
     }
     
-    
-   
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        if let title = titleTextField.text,
+           title != "",
+           let description = descriptionTextView.text,
+           description != "" {
+            
+            var type = ""
+            switch eventType {
+            case .social: type = "person.3"
+            case .entertainment: type = "film"
+            case .work: type = "signature"
+            }
+            EventController.shared.createEvent(name: title, descriptionText: description, date: eventDatePicker.date, eventType: type)
+            navigationController?.popViewController(animated: true)
+        }
+    }
     
     
     
