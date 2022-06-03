@@ -22,7 +22,14 @@ class EventListTableViewCell: UITableViewCell {
     func updateViews() {
         if let event = event, let date = event.startDate, let eventType = event.eventType  {
             isAttendingSwitch.isOn = event.isAttending
-            eventTimeLabel.text = "\(date)"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            
+            let styledDate = dateFormatter.string(from: date)
+            
+            eventTimeLabel.text = styledDate
             eventNameLabel.text = event.name
             eventTypeImage.image = UIImage(systemName: eventType)
         }

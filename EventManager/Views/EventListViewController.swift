@@ -15,11 +15,23 @@ class EventListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         EventController.shared.fetchEvents()
+        title = "Event Manager"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVIew",
+           let index = tableView.indexPathForSelectedRow,
+           let destination = segue.destination as? EventDetailViewController {
+            let event = EventController.shared.sections[index.section][index.row]
+            destination.event = event
+           
+        }
     }
     
     

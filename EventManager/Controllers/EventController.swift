@@ -40,8 +40,13 @@ class EventController {
         
     }
     
-    func updateEvent() {
+    func updateEvent(event: Event, name: String, descriptionText: String, date: Date, eventType: String) {
+        event.name = name
+        event.descriptionText = descriptionText
+        event.startDate = date
+        event.eventType = eventType
         
+        CoreDataStack.saveContext()
     }
     
     func deleteEvent(_ event: Event) {

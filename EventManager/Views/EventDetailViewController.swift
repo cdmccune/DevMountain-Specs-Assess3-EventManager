@@ -25,7 +25,7 @@ class EventDetailViewController: UIViewController {
     
     private var eventType: EventTypes = .entertainment
     
-    
+    var event: Event?
     
     
     
@@ -52,7 +52,15 @@ class EventDetailViewController: UIViewController {
         titleTextField.layer.cornerRadius = 5
         
         
-        
+        if let event = event{
+            titleTextField.text = event.name
+            descriptionTextView.text = event.descriptionText
+            if let date = event.startDate {
+                eventDatePicker.date = date
+            } else {
+                eventDatePicker.date = Date()
+            }
+        }
         
         
         let workItem = UIAction(title: "Work", image: UIImage(systemName: "signature")) { (action) in
@@ -77,19 +85,33 @@ class EventDetailViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        var type = ""
+        switch eventType {
+        case .social: type = "person.3"
+        case .entertainment: type = "film"
+        case .work: type = "signature"
+        }
+        
+        if let event = event {
+            if let title = titleTextField.text,
+               title != "",
+               let description = descriptionTextView.text,
+               description != "" {
+                
+                EventController.shared.updateEvent(event: event, name: title, descriptionText: description, date: eventDatePicker.date, eventType: type)
+                navigationController?.popViewController(animated: true)
+            }
+        } else {
+        
         if let title = titleTextField.text,
            title != "",
            let description = descriptionTextView.text,
            description != "" {
             
-            var type = ""
-            switch eventType {
-            case .social: type = "person.3"
-            case .entertainment: type = "film"
-            case .work: type = "signature"
-            }
             EventController.shared.createEvent(name: title, descriptionText: description, date: eventDatePicker.date, eventType: type)
             navigationController?.popViewController(animated: true)
+        }
         }
     }
     
