@@ -37,7 +37,6 @@ class EventListTableViewCell: UITableViewCell {
         }
     }
     
-    
 
     var event: Event? {
         didSet {

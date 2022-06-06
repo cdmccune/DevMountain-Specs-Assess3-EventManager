@@ -12,11 +12,34 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { authorized, error in
+            if let error = error {
+                print("There was an error authorizing \(error)")
+            }
+            
+            if authorized {
+                UNUserNotificationCenter.current().delegate = self
+                self.setNotificationCategories()
+                print("The user authorized ✅")
+            } else if !authorized {
+                print("The user didn't authorize 🛑")
+            }
+        }
         return true
     }
+    
+    private func setNotificationCategories() {
+        let okayCategory = UNNotificationCategory(identifier: "notificationCategory",
+                                                  actions: [],
+                                                  intentIdentifiers: [],
+                                                  hiddenPreviewsBodyPlaceholder: "",
+                                                  options: .customDismissAction)
+        UNUserNotificationCenter.current().setNotificationCategories([okayCategory])
+    }
+    
+
 
     // MARK: UISceneSession Lifecycle
 
@@ -79,3 +102,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .badge, .banner])
+    }
+}

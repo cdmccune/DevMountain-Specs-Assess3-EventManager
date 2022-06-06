@@ -43,13 +43,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Event Name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdB-KF-Zta">
-                                                    <rect key="frame" x="70" y="10" width="136" height="28"/>
+                                                    <rect key="frame" x="70" y="10" width="257" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Event Time)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcQ-0N-ffw">
-                                                    <rect key="frame" x="70" y="39" width="97" height="21"/>
+                                                    <rect key="frame" x="70" y="39" width="257" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
@@ -66,10 +66,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GWg-c4-dNm" firstAttribute="centerY" secondItem="6GO-hq-R9W" secondAttribute="centerY" id="2Bc-iw-wYQ"/>
+                                                <constraint firstItem="GWg-c4-dNm" firstAttribute="leading" secondItem="YdB-KF-Zta" secondAttribute="trailing" id="7iG-wS-9Tv"/>
                                                 <constraint firstItem="LcQ-0N-ffw" firstAttribute="leading" secondItem="YdB-KF-Zta" secondAttribute="leading" id="MWf-WH-y9I"/>
                                                 <constraint firstAttribute="bottom" secondItem="TS1-C4-R89" secondAttribute="bottom" constant="10" id="Pgi-Py-tTe"/>
                                                 <constraint firstItem="YdB-KF-Zta" firstAttribute="leading" secondItem="TS1-C4-R89" secondAttribute="trailing" constant="10" id="WCO-l4-Xy1"/>
                                                 <constraint firstItem="YdB-KF-Zta" firstAttribute="top" secondItem="TS1-C4-R89" secondAttribute="top" id="Xez-xf-jgW"/>
+                                                <constraint firstItem="GWg-c4-dNm" firstAttribute="leading" secondItem="LcQ-0N-ffw" secondAttribute="trailing" id="c0f-m3-tt2"/>
                                                 <constraint firstAttribute="trailing" secondItem="GWg-c4-dNm" secondAttribute="trailing" constant="20" symbolic="YES" id="hXK-jh-wDp"/>
                                                 <constraint firstAttribute="bottom" secondItem="LcQ-0N-ffw" secondAttribute="bottom" constant="10" id="jjD-LR-8ux"/>
                                                 <constraint firstItem="TS1-C4-R89" firstAttribute="top" secondItem="6GO-hq-R9W" secondAttribute="top" constant="10" id="umx-H0-BGA"/>
@@ -104,7 +106,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fsW-8Q-ivr">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="hdf-aw-bpW">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="hdf-aw-bpW">
                             <connections>
                                 <segue destination="Rn8-XC-leG" kind="show" id="Az8-OK-jhF"/>
                             </connections>
@@ -224,7 +226,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c3J-HZ-Jo3">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="vye-KS-Abh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vye-KS-Abh">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="Rn8-XC-leG" id="oIg-d8-b6T"/>
                             </connections>

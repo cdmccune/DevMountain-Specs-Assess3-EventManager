@@ -10,6 +10,8 @@ import CoreData
 
 class EventController {
     
+    private let notificationScheduler = NotificationScheduler()
+    
     static var shared = EventController()
     
     private lazy var fetchRequest: NSFetchRequest<Event> = {
@@ -31,6 +33,10 @@ class EventController {
         let event = Event(name: name, descriptionText: descriptionText, date: date, eventType: eventType)
         notAttendingEvents.append(event)
         CoreDataStack.saveContext()
+        
+
+        
+        notificationScheduler.scheduleNotifications(for: event)
     }
     
     func fetchEvents() {
@@ -47,9 +53,17 @@ class EventController {
         event.eventType = eventType
         
         CoreDataStack.saveContext()
+        
+        notificationScheduler.deleteNotification(for: event)
+        notificationScheduler.scheduleNotifications(for: event)
+        
     }
     
     func deleteEvent(_ event: Event) {
+        
+        
+        notificationScheduler.deleteNotification(for: event)
+        
         if let index = attendingEvents.firstIndex(of: event){
             attendingEvents.remove(at: index)
         } else if let index = notAttendingEvents.firstIndex(of: event) {
@@ -58,6 +72,10 @@ class EventController {
         
         CoreDataStack.context.delete(event)
         CoreDataStack.saveContext()
+        
+      
+        
+        
     }
     
     func isAttendingTapped(attending: Bool, event: Event) {
