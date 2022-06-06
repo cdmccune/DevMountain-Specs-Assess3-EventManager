@@ -30,7 +30,7 @@ class EventListViewController: UIViewController {
            let destination = segue.destination as? EventDetailViewController {
             let event = EventController.shared.sections[index.section][index.row]
             destination.event = event
-           
+            
         }
     }
     
@@ -54,6 +54,7 @@ extension EventListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Strings.tableViewCellID) as? EventListTableViewCell else {return UITableViewCell()}
         
         cell.event = EventController.shared.sections[indexPath.section][indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -65,5 +66,24 @@ extension EventListViewController: UITableViewDataSource {
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Attending"
+        } else if section == 1 {
+            return "Not Attending"
+        } else {
+            return nil 
+        }
+    }
+}
+
+extension EventListViewController: EventListTableViewCellDelegate {
+    func attendingSwitchTapped(event: Event, attending: Bool) {
+        
+        
+        EventController.shared.isAttendingTapped(attending: attending, event: event)
+        
+        tableView.reloadData()
+        
+    }
 }

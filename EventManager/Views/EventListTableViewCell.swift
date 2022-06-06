@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EventListTableViewCellDelegate: AnyObject {
-    func attendingSwitchTapped()
+    func attendingSwitchTapped(event: Event, attending: Bool)
 }
 
 class EventListTableViewCell: UITableViewCell {
@@ -18,6 +18,8 @@ class EventListTableViewCell: UITableViewCell {
     @IBOutlet var eventTimeLabel: UILabel!
     @IBOutlet var eventNameLabel: UILabel!
     @IBOutlet var eventTypeImage: UIImageView!
+    
+    weak var delegate: EventListTableViewCellDelegate?
     
     func updateViews() {
         if let event = event, let date = event.startDate, let eventType = event.eventType  {
@@ -35,6 +37,7 @@ class EventListTableViewCell: UITableViewCell {
         }
     }
     
+    
 
     var event: Event? {
         didSet {
@@ -43,7 +46,16 @@ class EventListTableViewCell: UITableViewCell {
     }
     
     
-  
+    @IBAction func eventSwitchTapped(_ sender: Any) {
+        
+        if let delegate = delegate, let event = event {
+            event.isAttending.toggle()
+            
+    
+            delegate.attendingSwitchTapped(event: event, attending: isAttendingSwitch.isOn)
+        }
+    }
+    
     
     
 }

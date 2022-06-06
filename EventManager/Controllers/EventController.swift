@@ -58,7 +58,22 @@ class EventController {
         
         CoreDataStack.context.delete(event)
         CoreDataStack.saveContext()
-                    
+    }
+    
+    func isAttendingTapped(attending: Bool, event: Event) {
+        
+        
+        
+        if attending == true, let index = notAttendingEvents.firstIndex(of: event) {
+            
+            notAttendingEvents.remove(at: index)
+            attendingEvents.append(event)
+        } else if attending == false, let index = attendingEvents.firstIndex(of: event) {
+            
+        attendingEvents.remove(at: index)
+            notAttendingEvents.append(event)
+        }
+        CoreDataStack.saveContext()
     }
     
 }

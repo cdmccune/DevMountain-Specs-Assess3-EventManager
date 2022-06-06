@@ -65,23 +65,23 @@ class EventDetailViewController: UIViewController {
         
         let workItem = UIAction(title: "Work", image: UIImage(systemName: "signature")) { (action) in
             self.eventType = .work
-           }
-
-           let entertainmentItem = UIAction(title: "Entertainment", image: UIImage(systemName: "film")) { (action) in
-
-               self.eventType = .entertainment
-           }
-
-           let socialItem = UIAction(title: "Social", image: UIImage(systemName: "person.3")) { (action) in
-               self.eventType = .social
-           }
-
-           let menu = UIMenu(title: "Event Type", options: .displayInline, children: [entertainmentItem, workItem , socialItem])
-      
+        }
+        
+        let entertainmentItem = UIAction(title: "Entertainment", image: UIImage(systemName: "film")) { (action) in
+            
+            self.eventType = .entertainment
+        }
+        
+        let socialItem = UIAction(title: "Social", image: UIImage(systemName: "person.3")) { (action) in
+            self.eventType = .social
+        }
+        
+        let menu = UIMenu(title: "Event Type", options: .displayInline, children: [entertainmentItem, workItem , socialItem])
+        
         eventPopUpButton.menu = menu
         eventPopUpButton.showsMenuAsPrimaryAction = true
-
-    
+        
+        
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -103,20 +103,17 @@ class EventDetailViewController: UIViewController {
                 navigationController?.popViewController(animated: true)
             }
         } else {
-        
-        if let title = titleTextField.text,
-           title != "",
-           let description = descriptionTextView.text,
-           description != "" {
             
-            EventController.shared.createEvent(name: title, descriptionText: description, date: eventDatePicker.date, eventType: type)
-            navigationController?.popViewController(animated: true)
-        }
+            if let title = titleTextField.text,
+               title != "",
+               let description = descriptionTextView.text,
+               description != "" {
+                
+                EventController.shared.createEvent(name: title, descriptionText: description, date: eventDatePicker.date, eventType: type)
+                navigationController?.popViewController(animated: true)
+            }
         }
     }
-    
-    
-    
 }
 
 

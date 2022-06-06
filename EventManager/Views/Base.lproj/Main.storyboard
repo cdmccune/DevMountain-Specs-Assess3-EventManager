@@ -59,6 +59,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="47" id="2Yx-MW-geu"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="eventSwitchTapped:" destination="BzC-s9-yl0" eventType="valueChanged" id="tOC-dl-rKL"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
